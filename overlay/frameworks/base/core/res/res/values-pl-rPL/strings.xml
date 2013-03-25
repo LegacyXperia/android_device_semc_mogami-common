@@ -21,7 +21,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- Options that show upon long-pressing a key on the physical keyboard
+    <!-- Options that show upon long-pressing a key on the physical keyboard -->
     <string name="symbol_picker_A">\u0104\u00C0\u00C1\u00C2\u00C4\u00C6\u00C3\u00C5\u0100</string>
     <string name="symbol_picker_C">\u0106\u00C7\u010C</string>
     <string name="symbol_picker_E">\u0118\u00C8\u00C9\u00CA\u00CB\u0118\u011A\u0112</string>
@@ -37,6 +37,6 @@
     <string name="symbol_picker_n">\u0144\u00F1\u0148</string>
     <string name="symbol_picker_o">\u00F3\u00F8\u0153\u00F5\u00F2\u00F4\u00F6\u014D</string>
     <string name="symbol_picker_s">\u015B\u00A7\u00DF\u0161\u015F</string>
-    <string name="symbol_picker_z">\u017C\u017A\u017E</string> -->
+    <string name="symbol_picker_z">\u017C\u017A\u017E</string>
 
 </resources>
