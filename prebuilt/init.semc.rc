@@ -99,8 +99,14 @@ on boot
 
     class_start default
 
-    #load new wl1271 modules
+    # Load wl1271 modules
     exec /system/bin/wifiload
+
+    # Load bluetooth modules
+    insmod /system/lib/modules/ti_hci_drv.ko
+    chmod 0666 /dev/tihci
+    chown system bluetooth /dev/tihci
+    insmod /system/lib/modules/uhid.ko
 
     # USB host support
     mkdir /dev/bus 0771 system system
@@ -125,13 +131,6 @@ on boot
 on property:init.svc.bluetoothd=running
     write /sys/devices/virtual/bluetooth/hci0/link_supervision_timeout 6400
 
-service hciattach /system/bin/hciattach -n /dev/ttyHS0 texas 3000000
-    class main
-    user bluetooth
-    group qcom_oncrpc bluetooth net_bt_admin
-    disabled
-    oneshot
-
 service wpa_supplicant /system/bin/wpa_supplicant -Dnl80211 -iwlan0 \
     -puse_p2p_group_interface=1 -c/data/misc/wifi/wpa_supplicant.conf \
     -e/data/misc/wifi/entropy.bin
@@ -146,7 +145,7 @@ service hostapd_bin /system/bin/hostapd -d /data/misc/wifi/hostapd.conf
     disabled
     oneshot
 
-service dhcpcd_wlan0 /system/bin/dhcpcd -aABKL
+service dhcpcd_wlan0 /system/bin/dhcpcd -aABDKL
     class main
     disabled
     oneshot

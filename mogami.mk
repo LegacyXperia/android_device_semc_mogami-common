@@ -35,8 +35,12 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     wpa_supplicant.conf \
     hostapd_cli \
-    hostapd
+    hostapd \
+    hciconfig \
+    hcitool \
+    libbt-vendor
 
+# TI FM Radio
 PRODUCT_PACKAGES += \
     Fmapplication \
     fmapp \
