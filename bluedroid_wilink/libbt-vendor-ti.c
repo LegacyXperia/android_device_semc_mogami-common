@@ -71,9 +71,9 @@ int ti_op(bt_vendor_opcode_t opcode, void **param) {
     switch(opcode)
     {
         case BT_VND_OP_USERIAL_OPEN:
-            fd = open("/dev/tihci", O_RDWR);
+            fd = open("/dev/hci_tty", O_RDWR);
             if (fd < 0) {
-                ALOGE(" Can't open tihci");
+                ALOGE(" Can't open hci_tty");
                 return -1;
             }
             fd_array[CH_CMD] = fd;
@@ -83,7 +83,7 @@ int ti_op(bt_vendor_opcode_t opcode, void **param) {
             close(hci_tty_fd);
             return 0;
         /* Since new stack expects fwcfg_cb we are returning SUCCESS here
-         * in actual, firmware download is already happened when /dev/tihci
+         * in actual, firmware download is already happened when /dev/hci_tty
          * opened.
          */
         case BT_VND_OP_FW_CFG:
