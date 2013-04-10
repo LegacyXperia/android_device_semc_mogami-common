@@ -30,6 +30,7 @@ endif
 
 # Bluetooth
 TARGET_CUSTOM_BLUEDROID := ../../../device/semc/mogami-common/bluedroid/bluetooth.c
+BOARD_WPAN_DEVICE := true
 
 # FM Radio
 BOARD_HAVE_QCOM_FM := true

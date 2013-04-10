@@ -56,3 +56,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     wifi.softapconcurrent.interface=wlan0 \
     ro.telephony.ril_class=SemcQualcomm7x30RIL \
     ro.telephony.default_network=0
+
+PRODUCT_PACKAGES += \
+    uim-sysfs
