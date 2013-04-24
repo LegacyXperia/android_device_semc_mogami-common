@@ -28,7 +28,8 @@ PRODUCT_COPY_FILES += \
 # WiFi config & related files
 PRODUCT_COPY_FILES += \
     device/semc/mogami-common/prebuilt/hostapd.conf:system/etc/wifi/hostapd.conf \
-    device/semc/mogami-common/prebuilt/wifiload:system/bin/wifiload
+    device/semc/mogami-common/prebuilt/wifiload:system/bin/wifiload \
+    device/semc/mogami-common/prebuilt/wl127x-fw-5-sr.bin:root/firmware/wl127x-fw-5-sr.bin
 
 PRODUCT_PACKAGES += \
     wpa_supplicant.conf \
