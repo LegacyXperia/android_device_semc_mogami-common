@@ -29,11 +29,13 @@ COMMON_GLOBAL_CFLAGS             += -DUSES_TI_MAC80211
 endif
 
 # Bluetooth
+BOARD_WPAN_DEVICE := true
 TARGET_CUSTOM_BLUEDROID := ../../../device/semc/mogami-common/bluedroid/bluetooth.c
 
 # FM Radio
+#CFG_FM_SERVICE_TI := true
 BOARD_HAVE_QCOM_FM := true
-BOARD_HAVE_FM_RADIO_TI := true
+#BOARD_HAVE_FM_RADIO_TI := true
 COMMON_GLOBAL_CFLAGS += -DQCOM_FM_ENABLED -DHAVE_SEMC_FM_RADIO
 
 # Camera
