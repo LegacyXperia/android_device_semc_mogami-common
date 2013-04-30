@@ -43,14 +43,14 @@ PRODUCT_PACKAGES += \
     libbt-vendor
 
 # TI FM Radio
-PRODUCT_PACKAGES += \
-    Fmapplication \
-    fmapp \
-    libfm_stack \
-    fmreceiverif \
-    com.ti.fm.fmreceiverif.xml \
-    FmRxService \
-    libfmrx
+#PRODUCT_PACKAGES += \
+#    Fmapplication \
+#    fmapp \
+#    libfm_stack \
+#    fmreceiverif \
+#    com.ti.fm.fmreceiverif.xml \
+#    FmRxService \
+#    libfmrx
 #    FmRxApp \
 #    FmTxApp \
 #    FmService \
