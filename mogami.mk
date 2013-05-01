@@ -42,21 +42,24 @@ PRODUCT_PACKAGES += \
     BluetoothSCOApp \
     libbt-vendor
 
-# TI FM Radio
-#PRODUCT_PACKAGES += \
-#    Fmapplication \
-#    fmapp \
-#    libfm_stack \
-#    fmreceiverif \
-#    com.ti.fm.fmreceiverif.xml \
-#    FmRxService \
-#    libfmrx
-#    FmRxApp \
-#    FmTxApp \
-#    FmService \
-#    libfmradio \
-#    fmradioif \
-#    com.ti.fm.fmradioif.xml \
+# CM FM app
+PRODUCT_PACKAGES += \
+    Fmapplication \
+    fmapp \
+    libfm_stack \
+    fmreceiverif \
+    com.ti.fm.fmreceiverif.xml \
+    FmRxService \
+    libfmrx
+
+# TI FM app
+PRODUCT_PACKAGES += \
+    FmRxApp \
+    FmTxApp \
+    FmService \
+    libfmradio \
+    fmradioif \
+    com.ti.fm.fmradioif.xml
 
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
