@@ -53,13 +53,12 @@ PRODUCT_PACKAGES += \
     libfmrx
 
 # TI FM app
-PRODUCT_PACKAGES += \
-    FmRxApp \
-    FmTxApp \
-    FmService \
-    libfmradio \
-    fmradioif \
-    com.ti.fm.fmradioif.xml
+#PRODUCT_PACKAGES += \
+#    FmRxApp \
+#    FmService \
+#    libfmradio \
+#    fmradioif \
+#    com.ti.fm.fmradioif.xml
 
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
