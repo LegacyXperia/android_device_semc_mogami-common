@@ -1,7 +1,7 @@
 import init.semc.usb.rc
 
 on early-boot
-    #offline charging
+    # Offline charging
     exec /system/bin/chargemon
 
 on post-fs-data
@@ -29,11 +29,11 @@ on early-init
     symlink /mnt/shell/primary/0 /storage/primary/legacy
 
 on boot
-    #radio fix
+    # Radio fix
     mkdir /data/radio 0775 radio radio
     mkdir /data/radio/log 0775 radio radio
 
-    # bluetooth power up/down interface
+    # Bluetooth power up/down interface
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
@@ -49,7 +49,7 @@ on boot
     chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
     chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
 
-    # Permissions for Liblights.
+    # Permissions for liblights
     chown system system /sys/class/leds/green/brightness
     chown system system /sys/class/leds/green/trigger
     chown system system /sys/class/leds/red/brightness
@@ -74,7 +74,7 @@ on boot
     chown system system /sys/devices/i2c-0/0-0053/flash_current
     chown system system /sys/devices/i2c-0/0-0053/status
 
-    #fix for Torch
+    # Torch
     chmod 0666 /sys/devices/i2c-0/0-0053/privacy_enable
     chmod 0666 /sys/devices/i2c-0/0-0053/privacy_current
     chmod 0666 /sys/devices/i2c-0/0-0053/flash_enable
@@ -108,11 +108,6 @@ on boot
 
     # Load wl1271 modules
     exec /system/bin/wifiload
-
-    # Load bluetooth modules
-    #chmod 0666 /dev/tty_hci
-    #chown system bluetooth /dev/tty_hci
-    #chmod 0666 /dev/uhid
 
     # USB host support
     mkdir /dev/bus 0771 system system
