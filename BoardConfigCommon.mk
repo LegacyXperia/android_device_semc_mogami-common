@@ -33,14 +33,9 @@ BOARD_WPAN_DEVICE := true
 TARGET_CUSTOM_BLUEDROID := ../../../device/semc/mogami-common/bluedroid/bluetooth.c
 
 # FM Radio
+#CFG_FM_SERVICE_TI := true
 #BOARD_HAVE_QCOM_FM := true
 #COMMON_GLOBAL_CFLAGS += -DQCOM_FM_ENABLED -DHAVE_SEMC_FM_RADIO
-
-# CM FM app
-#BOARD_HAVE_FM_RADIO_TI := true
-
-# TI FM app
-#CFG_FM_SERVICE_TI := true
 
 # Camera
 BOARD_CPU_COLOR_CONVERT:= true
