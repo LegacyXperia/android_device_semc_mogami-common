@@ -30,6 +30,7 @@ endif
 
 # Bluetooth
 BOARD_WPAN_DEVICE := true
+BOARD_HAVE_BLUETOOTH_TI := true
 TARGET_CUSTOM_BLUEDROID := ../../../device/semc/mogami-common/bluedroid/bluetooth.c
 
 # FM Radio
