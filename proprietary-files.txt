@@ -2,13 +2,11 @@
 bin/iw
 bin/nvimport
 bin/calibrator
-etc/firmware/fm_rx_init_1273.1.bts
-etc/firmware/fm_rx_init_1273.2.bts
-etc/firmware/fm_tx_init_1273.1.bts
-etc/firmware/fm_tx_init_1273.2.bts
-etc/firmware/fmc_init_1273.1.bts
 etc/firmware/fmc_init_1273.2.bts
+etc/firmware/fm_rx_init_1273.2.bts
+etc/firmware/fm_tx_ch8_1273.1.bts
+etc/firmware/fm_tx_ch8_1273.2.bts
+etc/firmware/fm_tx_init_1273.2.bts
 etc/firmware/TIInit_7.5.20.bts
 etc/firmware/TIInit_7.6.15.bts
-etc/firmware/wl1271-fw-multirole-roc.bin
 lib/libnl.so

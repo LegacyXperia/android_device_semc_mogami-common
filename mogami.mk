@@ -35,7 +35,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     wpa_supplicant.conf \
     hostapd_cli \
-    hostapd \
+    hostapd
+
+# wl1273 BT/FM
+PRODUCT_PACKAGES += \
     uim-sysfs \
     bt_sco_app \
     kfmapp     \
