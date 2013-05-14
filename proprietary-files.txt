@@ -2,7 +2,9 @@
 bin/iw
 bin/nvimport
 bin/calibrator
+etc/firmware/fmc_ch8_1273.2.bts
 etc/firmware/fmc_init_1273.2.bts
+etc/firmware/fm_rx_ch8_1273.2.bts
 etc/firmware/fm_rx_init_1273.2.bts
 etc/firmware/fm_tx_ch8_1273.1.bts
 etc/firmware/fm_tx_ch8_1273.2.bts
