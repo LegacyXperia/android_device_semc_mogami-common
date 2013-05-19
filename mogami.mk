@@ -30,7 +30,7 @@ PRODUCT_COPY_FILES += \
 
 # WiFi config & related files
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/etc/wifi/hostapd.conf:system/etc/wifi/hostapd.conf \
+    $(COMMON_PATH)/rootdir/system/etc/wifi/hostapd.conf:system/etc/wifi/hostapd.conf \
     $(COMMON_PATH)/rootdir/system/bin/wifiload:system/bin/wifiload
 
 PRODUCT_PACKAGES += \
