@@ -1,5 +1,4 @@
-#
-# Copyright (C) 2011 The CyanogenMod Project
+# Copyright (C) 2011-2013 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,7 +11,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
+
 -include device/semc/msm7x30-common/msm7x30.mk
 
 COMMON_PATH := device/semc/mogami-common
@@ -42,7 +41,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     uim-sysfs \
     bt_sco_app \
-    kfmapp     \
     BluetoothSCOApp \
     libbt-vendor
 
@@ -50,6 +48,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     FmRxApp \
     FmService \
+    kfmapp \
     libfmradio \
     fmradioif \
     com.ti.fm.fmradioif.xml
