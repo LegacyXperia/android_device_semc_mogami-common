@@ -63,12 +63,14 @@ on boot
     chmod 660 /sys/class/leds/lcd-backlight/brightness
 
     # Keyboard backlight
-    chown system system /sys/class/leds/keyboard-backlight/brightness
-    chmod 660 /sys/class/leds/keyboard-backlight/brightness
     chown system system /sys/class/leds/keyboard-backlight-rgb1/brightness
     chmod 660 /sys/class/leds/keyboard-backlight-rgb1/brightness
     chown system system /sys/class/leds/keyboard-backlight-rgb2/brightness
     chmod 660 /sys/class/leds/keyboard-backlight-rgb2/brightness
+    chown system system /sys/class/leds/keyboard-backlight-rgb3/brightness
+    chmod 660 /sys/class/leds/keyboard-backlight-rgb3/brightness
+    chown system system /sys/class/leds/keyboard-backlight-rgb4/brightness
+    chmod 660 /sys/class/leds/keyboard-backlight-rgb4/brightness
 
     # Button backlight
     chown system system /sys/class/leds/button-backlight/brightness
