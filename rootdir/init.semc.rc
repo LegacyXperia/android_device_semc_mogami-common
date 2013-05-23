@@ -1,6 +1,8 @@
 import init.semc.usb.rc
 
 on early-init
+    mount debugfs debugfs /sys/kernel/debug
+
     mkdir /storage 0555 root root
     mkdir /storage/primary 0555 root root
     mkdir /storage/primary/legacy 0555 root root
@@ -32,6 +34,10 @@ on early-boot
     exec /system/bin/chargemon
 
 on boot
+    # Disable idle power collapse during boot.
+    # These features will be enabled at the end of boot
+    write /sys/module/pm2/parameters/idle_sleep_mode 3
+
     # Radio fix
     mkdir /data/radio 0775 radio radio
     mkdir /data/radio/log 0775 radio radio
@@ -102,27 +108,25 @@ on boot
 
     # LM35xx/cameralight
     chown system system /sys/devices/i2c-0/0-0053/torch_enable
+    chmod 666 /sys/devices/i2c-0/0-0053/torch_enable
     chown system system /sys/devices/i2c-0/0-0053/torch_current
+    chmod 666 /sys/devices/i2c-0/0-0053/torch_current
     chown system system /sys/devices/i2c-0/0-0053/cm_torch
+    chmod 666 /sys/devices/i2c-0/0-0053/cm_torch
     chown system system /sys/devices/i2c-0/0-0053/privacy_enable
+    chmod 666 /sys/devices/i2c-0/0-0053/privacy_enable
     chown system system /sys/devices/i2c-0/0-0053/privacy_current
+    chmod 666 /sys/devices/i2c-0/0-0053/privacy_current
     chown system system /sys/devices/i2c-0/0-0053/flash_enable
+    chmod 666 /sys/devices/i2c-0/0-0053/flash_enable
     chown system system /sys/devices/i2c-0/0-0053/flash_duration
+    chmod 666 /sys/devices/i2c-0/0-0053/flash_duration
     chown system system /sys/devices/i2c-0/0-0053/flash_synchronization
+    chmod 666 /sys/devices/i2c-0/0-0053/flash_synchronization
     chown system system /sys/devices/i2c-0/0-0053/flash_current
+    chmod 666 /sys/devices/i2c-0/0-0053/flash_current
     chown system system /sys/devices/i2c-0/0-0053/status
-
-    # Torch
-    chmod 0666 /sys/devices/i2c-0/0-0053/privacy_enable
-    chmod 0666 /sys/devices/i2c-0/0-0053/privacy_current
-    chmod 0666 /sys/devices/i2c-0/0-0053/flash_enable
-    chmod 0666 /sys/devices/i2c-0/0-0053/flash_duration
-    chmod 0666 /sys/devices/i2c-0/0-0053/flash_synchronization
-    chmod 0666 /sys/devices/i2c-0/0-0053/flash_current
-    chmod 0666 /sys/devices/i2c-0/0-0053/status
-    chmod 0666 /sys/devices/i2c-0/0-0053/torch_enable
-    chmod 0666 /sys/devices/i2c-0/0-0053/torch_current
-    chmod 0666 /sys/devices/i2c-0/0-0053/cm_torch
+    chmod 666 /sys/devices/i2c-0/0-0053/status
 
     # Owner for the proximity sensor
     chown system system /sys/devices/i2c-0/0-0054/threshold
@@ -144,6 +148,8 @@ on boot
 
     chmod 0660 /sys/devices/platform/msm_hsusb/gadget/lun1/file
     chown usb usb /sys/devices/platform/msm_hsusb/gadget/lun1/file
+    chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
+    chown system system /sys/devices/platform/msm_hsusb/gadget/wakeup
 
     # power-management
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ondemand
@@ -156,7 +162,8 @@ on boot
     write /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor 4
     write /sys/devices/system/cpu/cpufreq/ondemand/down_differential 10
 
-    mount debugfs /sys/kernel/debug /sys/kernel/debug
+    # Don't disable dmesg access for apps
+    write /proc/sys/kernel/dmesg_restrict 0
 
 service uim /system/bin/uim-sysfs
     class core
@@ -211,7 +218,7 @@ service iprenew_bnep0 /system/bin/dhcpcd -n
     oneshot
 
 on property:init.svc.wpa_supplicant=stopped
-   stop dhcpcd
+    stop dhcpcd
 
 service port-bridge /system/bin/port-bridge /dev/smd0 /dev/ttyGS0 &
     class main
@@ -247,3 +254,6 @@ on property:dhcp.wlan0.result=ok
 
 on property:init.svc.hostapd_bin=stopped
     exec /system/bin/iw dev mon.wlan0 del
+
+on property:sys.boot_completed=1
+    write /sys/module/pm2/parameters/idle_sleep_mode 1
