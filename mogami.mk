@@ -21,7 +21,8 @@ DEVICE_PACKAGE_OVERLAYS += device/semc/mogami-common/overlay
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
-    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml
+    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
+    frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml
 
 # Init file
 PRODUCT_COPY_FILES += \
@@ -29,13 +30,13 @@ PRODUCT_COPY_FILES += \
 
 # WiFi config & related files
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/system/etc/wifi/hostapd.conf:system/etc/wifi/hostapd.conf \
     $(COMMON_PATH)/rootdir/system/bin/wifiload:system/bin/wifiload
 
 PRODUCT_PACKAGES += \
+    dhcpcd.conf \
+    hostapd.conf \
     wpa_supplicant.conf \
-    hostapd_cli \
-    hostapd
+    calibrator
 
 # wl1273 BT/FM
 PRODUCT_PACKAGES += \
@@ -55,8 +56,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
-    wifi.softap.interface=wlan0 \
-    wifi.softapconcurrent.interface=wlan0 \
     ro.telephony.ril_class=SemcQualcomm7x30RIL \
     ro.telephony.default_network=0
 
