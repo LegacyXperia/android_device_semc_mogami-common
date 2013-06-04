@@ -8,7 +8,7 @@ if [ ! -f /data/etc/wifi/wl1271-nvs.bin ]; then
     chown wifi.wifi /data/etc/wifi
 
     /system/bin/nvimport
-    /system/bin/calibrator set upd_nvs /etc/tiwlan.ini /data/etc/wifi/fw
+    /system/bin/calibrator set upd_nvs /system/etc/tiwlan.ini /data/etc/wifi/fw
 fi
 
 /system/bin/insmod /system/lib/modules/wl12xx.ko
