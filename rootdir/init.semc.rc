@@ -135,6 +135,12 @@ on boot
     chown system system /sys/devices/i2c-0/0-0053/status
     chmod 666 /sys/devices/i2c-0/0-0053/status
 
+    # AS3676/cameralight
+    chown system system /sys/class/leds/torch-rgb1/brightness
+    chmod 666 /sys/class/leds/torch-rgb1/brightness
+    chown system system /sys/class/leds/torch-rgb2/brightness
+    chmod 666 /sys/class/leds/torch-rgb2/brightness
+
     # Owner for the proximity sensor
     chown system system /sys/devices/i2c-0/0-0054/threshold
     chown system system /sys/devices/i2c-0/0-0054/nburst
