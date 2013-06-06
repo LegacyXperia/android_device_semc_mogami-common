@@ -113,6 +113,15 @@ on boot
     chown system system /sys/devices/i2c-0/0-0040/als_on
     chmod 660 /sys/devices/i2c-0/0-0040/als_on
 
+    # Torch
+
+    chmod 0666 /sys/class/leds/torch/brightness
+    chmod 0666 /sys/class/leds/torch/max_brightness
+    chmod 0666 /sys/class/leds/torch/trigger
+    chmod 0666 /sys/class/leds/torch/mode
+    chmod 0666 /sys/class/leds/torch/torch_enable
+    chmod 0666 /sys/class/leds/torch/torch_current
+
     # LM35xx/cameralight
     chown system system /sys/devices/i2c-0/0-0053/torch_enable
     chmod 666 /sys/devices/i2c-0/0-0053/torch_enable
