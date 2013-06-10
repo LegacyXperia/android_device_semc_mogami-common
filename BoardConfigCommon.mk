@@ -33,14 +33,10 @@ endif
 # Bluetooth
 BOARD_WPAN_DEVICE := true
 BOARD_HAVE_BLUETOOTH_TI := true
-#TARGET_CUSTOM_BLUEDROID := ../../../device/semc/mogami-common/bluedroid/bluetooth.c
 
 # FM Radio
 CFG_FM_SERVICE_TI := yes
 BOARD_HAVE_QCOM_FM := true
 COMMON_GLOBAL_CFLAGS += -DQCOM_FM_ENABLED -DHAVE_SEMC_FM_RADIO
-
-# Camera
-BOARD_CPU_COLOR_CONVERT:= true
 
 -include device/semc/msm7x30-common/Android.mk
