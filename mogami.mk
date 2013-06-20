@@ -59,4 +59,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.ril_class=SemcQualcomm7x30RIL \
     ro.telephony.default_network=0
 
-$(call inherit-product-if-exists, vendor/semc/mogami-common/mogami-common-vendor.mk)
+# proprietary side of the board
+$(call inherit-product, vendor/semc/mogami-common/mogami-common-vendor.mk)
