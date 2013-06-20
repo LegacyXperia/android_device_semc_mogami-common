@@ -70,20 +70,34 @@ on boot
     # Keyboard backlight
     chown system system /sys/class/leds/keyboard-backlight-rgb1/brightness
     chmod 660 /sys/class/leds/keyboard-backlight-rgb1/brightness
+    chown system system /sys/class/leds/keyboard-backlight-rgb1/max_brightness
+    chmod 660 /sys/class/leds/keyboard-backlight-rgb1/max_brightness
     chown system system /sys/class/leds/keyboard-backlight-rgb2/brightness
     chmod 660 /sys/class/leds/keyboard-backlight-rgb2/brightness
+    chown system system /sys/class/leds/keyboard-backlight-rgb2/max_brightness
+    chmod 660 /sys/class/leds/keyboard-backlight-rgb2/max_brightness
     chown system system /sys/class/leds/keyboard-backlight-rgb3/brightness
     chmod 660 /sys/class/leds/keyboard-backlight-rgb3/brightness
+    chown system system /sys/class/leds/keyboard-backlight-rgb3/max_brightness
+    chmod 660 /sys/class/leds/keyboard-backlight-rgb3/max_brightness
     chown system system /sys/class/leds/keyboard-backlight-rgb4/brightness
     chmod 660 /sys/class/leds/keyboard-backlight-rgb4/brightness
+    chown system system /sys/class/leds/keyboard-backlight-rgb4/max_brightness
+    chmod 660 /sys/class/leds/keyboard-backlight-rgb4/max_brightness
 
     # Button backlight
     chown system system /sys/class/leds/button-backlight/brightness
     chmod 660 /sys/class/leds/button-backlight/brightness
+    chown system system /sys/class/leds/button-backlight/max_brightness
+    chmod 660 /sys/class/leds/button-backlight/max_brightness
     chown system system /sys/class/leds/button-backlight-rgb1/brightness
     chmod 660 /sys/class/leds/button-backlight-rgb1/brightness
+    chown system system /sys/class/leds/button-backlight-rgb1/max_brightness
+    chmod 660 /sys/class/leds/button-backlight-rgb1/max_brightness
     chown system system /sys/class/leds/button-backlight-rgb2/brightness
     chmod 660 /sys/class/leds/button-backlight-rgb2/brightness
+    chown system system /sys/class/leds/button-backlight-rgb2/max_brightness
+    chmod 660 /sys/class/leds/button-backlight-rgb2/max_brightness
 
     # LED
     chown system system /sys/class/leds/red/brightness
