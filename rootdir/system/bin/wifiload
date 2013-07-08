@@ -9,8 +9,4 @@ if [ ! -f /data/etc/wifi/wl1271-nvs.bin ]; then
 
     /system/bin/nvimport
     /system/bin/calibrator set upd_nvs /system/etc/tiwlan.ini /data/etc/wifi/fw /data/etc/wifi/wl1271-nvs.bin
-
-    if [ -f /system/etc/firmware/ti-connectivity/wl1271-nvs.bin ]; then
-        rm -f /system/etc/firmware/ti-connectivity/wl1271-nvs.bin
-    fi
 fi
