@@ -1,9 +1,4 @@
 #!/system/bin/sh
-/system/bin/insmod /system/lib/modules/compat.ko
-/system/bin/insmod /system/lib/modules/cfg80211.ko
-/system/bin/insmod /system/lib/modules/mac80211.ko
-/system/bin/insmod /system/lib/modules/wl12xx.ko debug_level=0x63c00
-
 if [ ! -f /data/etc/wifi/wl1271-nvs.bin ]; then
     mkdir /data/etc
     chmod 775 /data/etc
@@ -18,6 +13,4 @@ if [ ! -f /data/etc/wifi/wl1271-nvs.bin ]; then
     if [ -f /system/etc/firmware/ti-connectivity/wl1271-nvs.bin ]; then
         rm -f /system/etc/firmware/ti-connectivity/wl1271-nvs.bin
     fi
-
-    /system/bin/ln -s /data/etc/wifi/wl1271-nvs.bin /system/etc/firmware/ti-connectivity/wl1271-nvs.bin
 fi
