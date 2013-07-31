@@ -41,8 +41,6 @@ PRODUCT_PACKAGES += \
 # wl1273 BT/FM
 PRODUCT_PACKAGES += \
     uim-sysfs \
-    bt_sco_app \
-    BluetoothSCOApp \
     libbt-vendor
 
 # TI FM app
