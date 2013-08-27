@@ -115,10 +115,6 @@ on boot
     chown system system /sys/devices/i2c-0/0-0040/dim_time
     chmod 660 /sys/devices/i2c-0/0-0040/dim_time
 
-    # AS3676/Ambient Light Sensor
-    chown system system /sys/devices/i2c-0/0-0040/als_on
-    chmod 660 /sys/devices/i2c-0/0-0040/als_on
-
     # LM35xx/cameralight
     chown system system /sys/devices/i2c-0/0-0053/torch_enable
     chmod 666 /sys/devices/i2c-0/0-0053/torch_enable
