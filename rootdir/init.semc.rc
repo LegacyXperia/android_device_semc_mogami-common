@@ -88,6 +88,9 @@ on boot
     chown system system /sys/devices/i2c-0/0-0040/dim_time
     chmod 660 /sys/devices/i2c-0/0-0040/dim_time
 
+    # Vibrator intensity tuning
+    chown system system /sys/class/timed_output/vibrator/voltage_level
+
     # Owner for the proximity sensor
     chown system system /sys/devices/i2c-0/0-0054/threshold
     chown system system /sys/devices/i2c-0/0-0054/nburst
