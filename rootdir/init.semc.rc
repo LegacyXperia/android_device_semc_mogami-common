@@ -230,10 +230,6 @@ on property:ro.use_data_netmgrd=false
 service akmd8975 /system/bin/akmd8975
     class main
 
-on early-boot
-    # Start touch firmware loader
-    exec /system/bin/clearpad_fwloader
-
 service hw_config /system/bin/sh /system/etc/hw_config.sh
     class main
     user root
