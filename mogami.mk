@@ -36,7 +36,8 @@ PRODUCT_PACKAGES += \
     dhcpcd.conf \
     hostapd.conf \
     wpa_supplicant.conf \
-    calibrator
+    calibrator \
+    iw
 
 # wl1273 BT/FM
 PRODUCT_PACKAGES += \
