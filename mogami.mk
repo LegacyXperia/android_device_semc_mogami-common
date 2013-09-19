@@ -26,7 +26,7 @@ PRODUCT_COPY_FILES += \
 
 # Init file
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/init.semc.rc:root/init.semc.rc
+    $(COMMON_PATH)/rootdir/init.board.rc:root/init.board.rc
 
 # WiFi config & related files
 PRODUCT_COPY_FILES += \
