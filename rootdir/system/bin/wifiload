@@ -7,6 +7,7 @@ if [ ! -f /data/etc/wifi/wl1271-nvs.bin ]; then
     chmod 775 /data/etc/wifi
     chown wifi.wifi /data/etc/wifi
 
+    /system/bin/nvcustomizer
     /system/bin/nvimport
     /system/bin/calibrator set upd_nvs /system/etc/tiwlan.ini /data/etc/wifi/fw /data/etc/wifi/wl1271-nvs.bin
 fi
