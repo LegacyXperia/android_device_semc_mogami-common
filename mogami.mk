@@ -42,6 +42,12 @@ PRODUCT_PACKAGES += \
     calibrator \
     iw
 
+# WiFi firmware
+PRODUCT_PACKAGES += \
+    wl127x-fw-4-sr.bin \
+    wl127x-fw-4-mr.bin \
+    wl127x-fw-4-plt.bin
+
 # wl1273 BT/FM
 PRODUCT_PACKAGES += \
     uim-sysfs \
