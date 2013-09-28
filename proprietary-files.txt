@@ -1,5 +1,4 @@
 # WiFi/BT/FM TI wl1273
-bin/nvimport
 etc/firmware/fmc_ch8_1273.2.bts
 etc/firmware/fmc_init_1273.2.bts
 etc/firmware/fm_rx_ch8_1273.2.bts
