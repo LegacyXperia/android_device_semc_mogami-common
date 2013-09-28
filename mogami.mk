@@ -30,12 +30,15 @@ PRODUCT_COPY_FILES += \
 
 # WiFi config & related files
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/system/bin/wifiload:system/bin/wifiload
+    $(COMMON_PATH)/rootdir/system/bin/wifical.sh:system/bin/wifical.sh \
+    $(COMMON_PATH)/rootdir/system/bin/wificalcheck.sh:system/bin/wificalcheck.sh
 
 PRODUCT_PACKAGES += \
     dhcpcd.conf \
     hostapd.conf \
     wpa_supplicant.conf \
+    crda \
+    regulatory.bin \
     calibrator \
     iw
 
