@@ -39,8 +39,7 @@ PRODUCT_PACKAGES += \
     wpa_supplicant.conf \
     crda \
     regulatory.bin \
-    calibrator \
-    iw
+    calibrator
 
 # WiFi firmware
 PRODUCT_PACKAGES += \
