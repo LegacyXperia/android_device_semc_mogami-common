@@ -33,6 +33,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/system/bin/wifical.sh:system/bin/wifical.sh \
     $(COMMON_PATH)/rootdir/system/bin/wificalcheck.sh:system/bin/wificalcheck.sh \
+    $(COMMON_PATH)/rootdir/system/etc/init.crda.sh:system/etc/init.crda.sh \
     $(COMMON_PATH)/rootdir/system/etc/init.d/10dhcpcd:system/etc/init.d/10dhcpcd
 
 PRODUCT_PACKAGES += \
