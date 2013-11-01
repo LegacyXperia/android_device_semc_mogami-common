@@ -45,24 +45,13 @@ PRODUCT_PACKAGES += \
     calibrator
 
 # WiFi firmware
-PRODUCT_PACKAGES += \
-    wl127x-fw-4-sr.bin \
-    wl127x-fw-4-mr.bin \
-    wl127x-fw-4-plt.bin
+$(call inherit-product, hardware/ti/wlan/mac80211/wl127x-wlan-products.mk)
 
-# wl1273 BT/FM
-PRODUCT_PACKAGES += \
-    uim-sysfs \
-    libbt-vendor
+# BT
+$(call inherit-product, hardware/ti/wpan/ti-wpan-products.mk)
 
-# TI FM app
-PRODUCT_PACKAGES += \
-    FmRxApp \
-    FmService \
-    kfmapp \
-    libfmradio \
-    fmradioif \
-    com.ti.fm.fmradioif.xml
+# FM
+#$(call inherit-product, hardware/ti/wpan/ti-wpan-fm-products.mk)
 
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
