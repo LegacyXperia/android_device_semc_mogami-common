@@ -2,6 +2,7 @@
 
 WIFION=`getprop init.svc.p2p_supplicant`
 TARGET_FW_DIR=/system/etc/firmware/ti-connectivity
+SAMPLE_NVS_FILE=$TARGET_FW_DIR/wl1271-nvs_127x.bin
 TARGET_NVS_FILE=$TARGET_FW_DIR/wl1271-nvs.bin
 TARGET_INI_FILE=/system/etc/wifi/TQS_S_2.6.ini
 WL12xx_MODULE=/system/lib/modules/wl12xx_sdio.ko
@@ -31,16 +32,16 @@ fi
 # Remount system partition as rw
 mount -o remount rw /system
 
-# Remove old NVS file
-if [ -e $TARGET_NVS_FILE ];
+# Rename the sample NVS file
+if [ -e $SAMPLE_NVS_FILE ];
 then
-    rm $TARGET_NVS_FILE
+    mv $SAMPLE_NVS_FILE $TARGET_NVS_FILE
 fi
 
 # Actual calibration...
 # calibrator plt autocalibrate <dev> <module path> <ini file1> <nvs file> <mac addr>
 # Leaving mac address field empty for random mac
-nvimport
+nvimport > /dev/null 2>&1
 calibrator set upd_nvs $TARGET_INI_FILE /data/etc/wifi/fw $TARGET_NVS_FILE
 calibrator set nvs_mac $TARGET_NVS_FILE $HW_MAC
 
