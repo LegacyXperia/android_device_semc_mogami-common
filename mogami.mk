@@ -31,8 +31,7 @@ PRODUCT_COPY_FILES += \
 
 # WiFi config & related files
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/system/bin/wifical.sh:system/bin/wifical.sh \
-    $(COMMON_PATH)/rootdir/system/bin/wificalcheck.sh:system/bin/wificalcheck.sh \
+    $(COMMON_PATH)/rootdir/system/bin/wifi-cal.sh:system/bin/wifi-cal.sh \
     $(COMMON_PATH)/rootdir/system/etc/init.crda.sh:system/etc/init.crda.sh \
     $(COMMON_PATH)/rootdir/system/etc/init.d/10dhcpcd:system/etc/init.d/10dhcpcd
 
@@ -44,8 +43,9 @@ PRODUCT_PACKAGES += \
     regulatory.bin \
     calibrator
 
-# WiFi firmware
+# WiFi
 $(call inherit-product, hardware/ti/wlan/mac80211/wl127x-wlan-products.mk)
+$(call inherit-product, $(COMMON_PATH)/wl127x-nvs-symlink.mk)
 
 # BT
 $(call inherit-product, hardware/ti/wpan/ti-wpan-products.mk)
