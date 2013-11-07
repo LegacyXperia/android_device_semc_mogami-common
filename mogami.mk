@@ -45,7 +45,6 @@ PRODUCT_PACKAGES += \
 
 # WiFi
 $(call inherit-product, hardware/ti/wlan/mac80211/wl127x-wlan-products.mk)
-$(call inherit-product, $(COMMON_PATH)/wl127x-nvs-symlink.mk)
 
 # BT
 $(call inherit-product, hardware/ti/wpan/ti-wpan-products.mk)
