@@ -30,8 +30,7 @@ PRODUCT_COPY_FILES += \
 
 # WiFi config & related files
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/system/bin/wifical.sh:system/bin/wifical.sh \
-    $(COMMON_PATH)/rootdir/system/bin/wificalcheck.sh:system/bin/wificalcheck.sh \
+    $(COMMON_PATH)/rootdir/system/bin/wifi-cal.sh:system/bin/wifi-cal.sh \
     $(COMMON_PATH)/rootdir/system/etc/init.d/10dhcpcd:system/etc/init.d/10dhcpcd
 
 PRODUCT_PACKAGES += \
@@ -46,7 +45,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     wl127x-fw-4-sr.bin \
     wl127x-fw-4-mr.bin \
-    wl127x-fw-4-plt.bin
+    wl127x-fw-4-plt.bin \
+    wl1271-nvs_127x.bin
 
 # wl1273 BT/FM
 PRODUCT_PACKAGES += \

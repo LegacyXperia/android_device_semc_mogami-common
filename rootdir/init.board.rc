@@ -20,7 +20,7 @@ on boot
     insmod /system/lib/modules/cfg80211.ko
     insmod /system/lib/modules/mac80211.ko
     insmod /system/lib/modules/wl12xx.ko
-    start wifical_check
+    setprop persist.wlan.ti.calibrated 0
 
 on post-fs-data
     setprop vold.post_fs_data_done 1
@@ -86,23 +86,14 @@ service iprenew_bt-pan /system/bin/dhcpcd -n
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd_wlan0
 
-# Wifi check
-service wifical_check /system/bin/sh /system/bin/wificalcheck.sh
-    disabled
-    class late_start
-    user root
-    group wifi
-    oneshot
-
 # Wifi calibrate
-service wifi_calibrator /system/bin/sh /system/bin/wifical.sh
+service wifi_calibrator /system/bin/sh /system/bin/wifi-cal.sh
     disabled
     class late_start
     user root
     group wifi
     oneshot
 
-# Very first boot. We need to set the MAC address
+# We need to set the right calibration data
 on property:persist.wlan.ti.calibrated=0
     start wifi_calibrator
-    setprop persist.wlan.ti.calibrated 1
