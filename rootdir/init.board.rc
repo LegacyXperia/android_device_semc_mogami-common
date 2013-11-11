@@ -1,4 +1,6 @@
-import init.device.rc
+# Common init for semc mogami devices
+
+import /init.device.rc
 
 on boot
     # Bluetooth HID
