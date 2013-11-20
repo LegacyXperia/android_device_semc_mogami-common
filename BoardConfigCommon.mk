@@ -52,4 +52,7 @@ BOARD_HAVE_BLUETOOTH_TI := true
 #BOARD_HAVE_QCOM_FM := true
 #COMMON_GLOBAL_CFLAGS += -DQCOM_FM_ENABLED -DHAVE_SEMC_FM_RADIO
 
+# Override healthd HAL
+BOARD_HAL_STATIC_LIBRARIES := libhealthd.mogami
+
 -include device/semc/msm7x30-common/Android.mk
