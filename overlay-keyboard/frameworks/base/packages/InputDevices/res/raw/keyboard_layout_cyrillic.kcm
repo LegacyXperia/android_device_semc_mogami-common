@@ -185,6 +185,7 @@ key K {
     capslock:                           'k'
     shift+capslock:                     'K'
     alt:                                '\u0445'
+    shift+alt:                          '\u0425'
 }
 
 key L {
@@ -194,15 +195,15 @@ key L {
     capslock:                           'l'
     shift+capslock:                     'L'
     alt:                                '\u044A'
+    shift+alt:                          '\u042A'
 }
 
 key APOSTROPHE {
     label:                              '\''
-    base:                               '\u044D'
-    shift:                              '\u042D'
-    capslock:                           '\u044D'
-    shift+capslock:                     '\u042D'
+    base, capslock:                     '\u044D'
+    shift, shift+capslock:              '\u042D'
     alt, capslock+alt:                  '\u0436'
+    shift+alt, shift+capslock+alt:      '\u0416'
 }
 
 key ENTER {
@@ -228,7 +229,7 @@ key X {
     base:                               '\u0447'
     shift:                              '\u0427'
     capslock:                           'x'
-    shift+capslock:                     'x'
+    shift+capslock:                     'X'
     alt, capslock+alt:                  '"'
 }
 
@@ -279,11 +280,10 @@ key M {
 
 key GRAVE {
     label:                              '?'
-    base:                               '\u044C'
-    shift:                              '\u042C'
-    capslock:                           '\u044C'
-    shift+capslock:                     '\u042C'
+    base, capslock:                     '\u044C'
+    shift, shift+capslock:              '\u042C'
     alt, capslock+alt:                  '\u044E'
+    shift+alt, shift+capslock+alt:      '\u042E'
 }
 
 ### ROW 4
