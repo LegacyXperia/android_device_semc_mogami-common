@@ -30,10 +30,14 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/init.board.rc:root/init.board.rc
 
 # WiFi config & related files
+$(call inherit-product, hardware/ti/wlan/mac80211/wl127x-wlan-products.mk)
+
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/system/bin/wifi-cal.sh:system/bin/wifi-cal.sh \
     $(COMMON_PATH)/rootdir/system/etc/init.crda.sh:system/etc/init.crda.sh \
-    $(COMMON_PATH)/rootdir/system/etc/init.d/10dhcpcd:system/etc/init.d/10dhcpcd
+    $(COMMON_PATH)/rootdir/system/etc/init.d/10dhcpcd:system/etc/init.d/10dhcpcd \
+    $(COMMON_PATH)/rootdir/system/etc/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
+    $(COMMON_PATH)/rootdir/system/etc/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
 
 PRODUCT_PACKAGES += \
     dhcpcd.conf \
@@ -42,9 +46,6 @@ PRODUCT_PACKAGES += \
     crda \
     regulatory.bin \
     calibrator
-
-# WiFi
-$(call inherit-product, hardware/ti/wlan/mac80211/wl127x-wlan-products.mk)
 
 # BT
 $(call inherit-product, hardware/ti/wpan/ti-wpan-products.mk)

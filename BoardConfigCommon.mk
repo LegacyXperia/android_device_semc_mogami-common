@@ -30,6 +30,9 @@ WIFI_FIRMWARE_LOADER             := ""
 COMMON_GLOBAL_CFLAGS             += -DUSES_TI_MAC80211
 endif
 
+# Required for newer wpa_supplicant_8_ti versions to fix tethering
+BOARD_WIFI_SKIP_CAPABILITIES := true
+
 TARGET_MODULES_SOURCE := hardware/ti/wlan/mac80211/compat_wl12xx
 
 WLAN_MODULES:
