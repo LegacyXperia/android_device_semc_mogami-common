@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2014 The CyanogenMod Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Mogami keypad</string>
+    <string name="keyboard_layouts_label">Xperia Mini Pro / Pro keyboard</string>
+    <string name="keyboard_layout_arabic_label">Arabic</string>
+    <string name="keyboard_layout_azerty_label">AZERTY</string>
+    <string name="keyboard_layout_cyrillic_label">Cyrillic</string>
+    <string name="keyboard_layout_da_no_label">Danish/Norwegian</string>
+    <string name="keyboard_layout_greek_label">Greek</string>
+    <string name="keyboard_layout_pt_label">Portuguese/Catalan</string>
+    <string name="keyboard_layout_qwerty_label">QWERTY</string>
+    <string name="keyboard_layout_qwertz_label">QWERTZ</string>
+    <string name="keyboard_layout_se_fi_label">Swedish/Finnish</string>
+</resources>
