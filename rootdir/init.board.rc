@@ -27,9 +27,6 @@ on boot
     insmod /system/lib/modules/wl12xx_sdio.ko
     setprop persist.wlan.ti.calibrated 0
 
-on post-fs-data
-    setprop vold.post_fs_data_done 1
-
 # Shared transport user space mgr service for Bluetooth & FM
 service uim /system/bin/uim-sysfs
     class core
