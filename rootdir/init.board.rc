@@ -24,7 +24,6 @@ on boot
     insmod /system/lib/modules/cfg80211.ko
     insmod /system/lib/modules/mac80211.ko
     insmod /system/lib/modules/wl12xx.ko
-    insmod /system/lib/modules/wl12xx_sdio.ko
     setprop persist.wlan.ti.calibrated 0
 
 # Shared transport user space mgr service for Bluetooth & FM

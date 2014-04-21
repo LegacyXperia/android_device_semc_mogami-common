@@ -21,7 +21,8 @@ case "$WIFION" in
   "running") echo " ****************************************"
              echo " * Turning Wi-Fi off before calibration *"
              echo " ****************************************"
-             svc wifi disable;;
+             svc wifi disable
+             rmmod $WL12xx_MODULE;;
           *) echo " ******************************"
              echo " * Starting Wi-Fi calibration *"
              echo " ******************************";;
@@ -29,7 +30,7 @@ esac
 
 if [ -e $WL12xx_MODULE ];
 then
-    rmmod $WL12xx_MODULE
+    echo ""
 else
     echo "*********************************"
     echo "* wl12xx_sdio module not found! *"
@@ -44,8 +45,6 @@ nvimport > /dev/null 2>&1
 calibrator set upd_nvs $TARGET_INI_FILE /data/etc/wifi/fw $TARGET_NVS_FILE
 calibrator set nvs_mac $TARGET_NVS_FILE $HW_MAC
 setprop persist.wlan.ti.calibrated 1
-
-insmod $WL12xx_MODULE
 
 echo " ******************************"
 echo " * Finished Wi-Fi calibration *"
