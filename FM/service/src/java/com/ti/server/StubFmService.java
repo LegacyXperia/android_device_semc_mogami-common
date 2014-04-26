@@ -30,6 +30,7 @@ import android.os.RemoteException;
 import android.os.Handler;
 import android.media.AudioManager;
 import android.media.AudioManager.OnAudioFocusChangeListener;
+import android.media.AudioSystem;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.PowerManager;
@@ -522,6 +523,11 @@ public class StubFmService extends IFmRadio.Stub implements
             mAudioManager.registerMediaButtonEventReceiver(
             mRemoteControlResponder);
 
+            Log.d(TAG, "FMRadio: Requesting to start FM");
+            AudioSystem.setDeviceConnectionState(AudioSystem.DEVICE_OUT_FM,
+                    AudioSystem.DEVICE_STATE_AVAILABLE, "");
+            AudioSystem.setForceUse(AudioSystem.FOR_MEDIA, AudioSystem.FORCE_SPEAKER);
+
         if((mRxState!= STATE_DEFAULT)&&(mRxState!= STATE_DISABLED))
               switch (mRxState) {
                    case STATE_ENABLED:
@@ -614,6 +620,10 @@ public class StubFmService extends IFmRadio.Stub implements
             Log.e(TAG, "disable error: fm not enabled " + mRxState);
             return false;
         }
+
+        Log.d(TAG, "FMRadio: Requesting to stop FM");
+        AudioSystem.setDeviceConnectionState(AudioSystem.DEVICE_OUT_FM,
+                AudioSystem.DEVICE_STATE_UNAVAILABLE, "");
 
         mDelayedDisableHandler.postDelayed(mDelayedDisable, FM_DISABLE_DELAY);
 
