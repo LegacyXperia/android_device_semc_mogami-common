@@ -51,7 +51,7 @@ PRODUCT_PACKAGES += \
 $(call inherit-product, hardware/ti/wpan/ti-wpan-products.mk)
 
 # FM
-$(call inherit-product, hardware/ti/wpan/ti-wpan-fm-products.mk)
+#$(call inherit-product, hardware/ti/wpan/ti-wpan-fm-products.mk)
 
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
