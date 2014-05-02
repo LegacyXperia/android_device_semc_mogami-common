@@ -36,14 +36,18 @@ endif
 BOARD_WIFI_SKIP_CAPABILITIES := true
 
 TARGET_MODULES_SOURCE := hardware/ti/wlan/mac80211/compat_wl12xx
+TARGET_MODULES_SOURCE_DIR := compat_wl12xx
 
 WLAN_MODULES:
-	$(MAKE) -C $(TARGET_MODULES_SOURCE) KERNEL_DIR=$(KERNEL_OUT) KLIB=$(KERNEL_OUT) KLIB_BUILD=$(KERNEL_OUT) ARCH=$(TARGET_ARCH) $(ARM_CROSS_COMPILE) clean modules
-	mv $(TARGET_MODULES_SOURCE)/compat/compat.ko $(KERNEL_MODULES_OUT)
-	mv $(TARGET_MODULES_SOURCE)/net/mac80211/mac80211.ko $(KERNEL_MODULES_OUT)
-	mv $(TARGET_MODULES_SOURCE)/net/wireless/cfg80211.ko $(KERNEL_MODULES_OUT)
-	mv $(TARGET_MODULES_SOURCE)/drivers/net/wireless/wl12xx/wl12xx.ko $(KERNEL_MODULES_OUT)
-	mv $(TARGET_MODULES_SOURCE)/drivers/net/wireless/wl12xx/wl12xx_sdio.ko $(KERNEL_MODULES_OUT)
+	rm -rf $(KERNEL_OUT)/modules
+	mkdir $(KERNEL_OUT)/modules
+	cp -rf $(TARGET_MODULES_SOURCE) $(KERNEL_OUT)/modules
+	$(MAKE) -C $(KERNEL_OUT)/modules/$(TARGET_MODULES_SOURCE_DIR) O=$(KERNEL_OUT)/COMPAT KERNEL_DIR=$(KERNEL_OUT) KLIB=$(KERNEL_OUT) KLIB_BUILD=$(KERNEL_OUT) ARCH=$(TARGET_ARCH) $(ARM_CROSS_COMPILE)
+	mv $(KERNEL_OUT)/modules/$(TARGET_MODULES_SOURCE_DIR)/compat/compat.ko $(KERNEL_MODULES_OUT)
+	mv $(KERNEL_OUT)/modules/$(TARGET_MODULES_SOURCE_DIR)/net/mac80211/mac80211.ko $(KERNEL_MODULES_OUT)
+	mv $(KERNEL_OUT)/modules/$(TARGET_MODULES_SOURCE_DIR)/net/wireless/cfg80211.ko $(KERNEL_MODULES_OUT)
+	mv $(KERNEL_OUT)/modules/$(TARGET_MODULES_SOURCE_DIR)/drivers/net/wireless/wl12xx/wl12xx.ko $(KERNEL_MODULES_OUT)
+	mv $(KERNEL_OUT)/modules/$(TARGET_MODULES_SOURCE_DIR)/drivers/net/wireless/wl12xx/wl12xx_sdio.ko $(KERNEL_MODULES_OUT)
 	$(ARM_EABI_TOOLCHAIN)/arm-eabi-strip --strip-debug --strip-unneeded $(KERNEL_MODULES_OUT)/compat.ko
 	$(ARM_EABI_TOOLCHAIN)/arm-eabi-strip --strip-debug --strip-unneeded $(KERNEL_MODULES_OUT)/mac80211.ko
 	$(ARM_EABI_TOOLCHAIN)/arm-eabi-strip --strip-debug --strip-unneeded $(KERNEL_MODULES_OUT)/cfg80211.ko
