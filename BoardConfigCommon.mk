@@ -68,4 +68,7 @@ TARGET_PROVIDES_TI_FM_SERVICE := true
 # Override healthd HAL
 BOARD_HAL_STATIC_LIBRARIES := libhealthd.mogami
 
+# Recovery
+BOARD_RECOVERY_SWIPE := true
+
 -include device/semc/msm7x30-common/Android.mk
