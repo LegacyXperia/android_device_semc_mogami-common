@@ -275,6 +275,10 @@ enum wl12xx_flags {
 	WL1271_FLAG_VIF_CHANGE_IN_PROGRESS,
 	WL1271_FLAG_INTENDED_FW_RECOVERY,
 	WL1271_FLAG_IO_FAILED,
+#ifdef CONFIG_BOARD_SEMC_MOGAMI
+	WL1271_FLAG_PROBE_RESP_SET,
+	WL1271_FLAG_HW_GOING_DOWN,
+#endif
 };
 
 enum wl12xx_vif_flags {
@@ -304,16 +308,28 @@ struct wl1271_link {
 	/* bitmap of TIDs where RX BA sessions are active for this link */
 	u8 ba_bitmap;
 };
-
+#ifdef CONFIG_BOARD_SEMC_MOGAMI
+#define WL1271_MAX_RX_FILTERS 4
+#define WL1271_RX_DATA_FILTER_MAX_FIELD_PATTERNS 8
+#else
 #define WL1271_MAX_RX_FILTERS 7
+#endif
 #define WL1271_RX_FILTER_MAX_FIELDS 8
 
 #define WL1271_RX_FILTER_ETH_HEADER_SIZE 14
 #define WL1271_RX_FILTER_MAX_FIELDS_SIZE 95
+
+#ifdef CONFIG_BOARD_SEMC_MOGAMI
+#define WL1271_RX_DATA_FILTER_MAX_PATTERN_SIZE 43
+#define WL1271_RX_FILTER_MAX_PATTERN_SIZE 43
+#define WL1271_RX_DATA_FILTER_ETH_HEADER_SIZE 14
+#endif
 #define RX_FILTER_FIELD_OVERHEAD \
 	(sizeof(struct wl12xx_rx_data_filter_field) - sizeof(u8 *))
+#ifndef CONFIG_BOARD_SEMC_MOGAMI
 #define WL1271_RX_FILTER_MAX_PATTERN_SIZE \
 	(WL1271_RX_FILTER_MAX_FIELDS_SIZE - RX_FILTER_FIELD_OVERHEAD)
+#endif
 
 #define WL1271_RX_FILTER_FLAG_MASK                BIT(0)
 #define WL1271_RX_FILTER_FLAG_IP_HEADER           0
@@ -403,6 +419,11 @@ struct wl1271 {
 	u32 tx_blocks_available;
 	u32 tx_allocated_blocks;
 	u32 tx_results_count;
+
+#ifdef CONFIG_BOARD_SEMC_MOGAMI
+	/* amount of spare TX blocks to use */
+	u32 tx_spare_blocks;
+#endif
 
 	/* Accounting for allocated / available Tx packets in HW */
 	u32 tx_pkts_freed[NUM_TX_QUEUES];
@@ -594,10 +615,21 @@ struct wl1271 {
 
 	/* Patterns configured with set_rx_filters */
 	struct cfg80211_wowlan *wowlan_patterns;
+
+#ifdef CONFIG_BOARD_SEMC_MOGAMI
+	/* Max rate for current STA connection */
+	u8 max_tx_rate;
+
+	/* Rate flags for the rate above */
+	u8 max_tx_rate_flags;
+#endif
 };
 
 struct wl1271_station {
 	u8 hlid;
+#ifdef CONFIG_BOARD_SEMC_MOGAMI
+	bool authorized;
+#endif
 };
 
 struct wl12xx_vif {
@@ -785,7 +817,12 @@ u8 wl12xx_open_count(struct wl1271 *wl);
 /* WL1271 needs a 200ms sleep after power on, and a 20ms sleep before power
    on in case is has been shut down shortly before */
 #define WL1271_PRE_POWER_ON_SLEEP 20 /* in milliseconds */
+
+#ifdef CONFIG_BOARD_SEMC_MOGAMI
+#define WL1271_POWER_ON_SLEEP 130 /* in milliseconds */
+#else
 #define WL1271_POWER_ON_SLEEP 200 /* in milliseconds */
+#endif
 
 /* Macros to handle wl1271.sta_rate_set */
 #define HW_BG_RATES_MASK	0xffff

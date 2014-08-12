@@ -221,7 +221,9 @@ static int __devinit wl1271_probe(struct sdio_func *func,
 	func->card->quirks |= MMC_QUIRK_LENIENT_FN0;
 
 	/* Use block mode for transferring over one block size of data */
+#ifndef CONFIG_BOARD_SEMC_MOGAMI
 	func->card->quirks |= MMC_QUIRK_BLKSZ_FOR_BYTE_MODE;
+#endif
 
 	wlan_data = wl12xx_get_platform_data();
 	if (IS_ERR(wlan_data)) {

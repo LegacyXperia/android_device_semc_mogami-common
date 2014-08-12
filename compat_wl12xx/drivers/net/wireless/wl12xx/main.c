@@ -228,8 +228,13 @@ static struct conf_drv_settings default_conf = {
 	.conn = {
 		.wake_up_event               = CONF_WAKE_UP_EVENT_DTIM,
 		.listen_interval             = 1,
+#ifdef CONFIG_BOARD_SEMC_MOGAMI
+		.suspend_wake_up_event       = CONF_WAKE_UP_EVENT_N_DTIM,
+		.suspend_listen_interval     = 3,
+#else
 		.suspend_wake_up_event       = CONF_WAKE_UP_EVENT_DTIM,
 		.suspend_listen_interval     = 1,
+#endif
 		.bcn_filt_mode               = CONF_BCN_FILT_MODE_ENABLED,
 		.bcn_filt_ie_count           = 3,
 		.bcn_filt_ie = {
@@ -247,7 +252,11 @@ static struct conf_drv_settings default_conf = {
 			},
 
 		},
+#ifdef CONFIG_BOARD_SEMC_MOGAMI
+		.synch_fail_thold            = 20,
+#else
 		.synch_fail_thold            = 12,
+#endif
 		.bss_lose_timeout            = 400,
 		.cons_bcn_loss_time          = 5000,
 		.max_bcn_loss_time           = 10000,
@@ -1996,6 +2005,11 @@ irq_disable:
 		   possible concurrent operations will fail due to the
 		   current state, hence the wl1271 struct should be safe. */
 		wl1271_disable_interrupts(wl);
+#ifdef CONFIG_BOARD_SEMC_MOGAMI
+		mutex_lock(&wl->mutex);
+		wl->state = WLCORE_STATE_OFF;
+		mutex_unlock(&wl->mutex);
+#endif
 		wl1271_flush_deferred_work(wl);
 		cancel_work_sync(&wl->netstack_work);
 		mutex_lock(&wl->mutex);
@@ -2047,6 +2061,9 @@ int wl1271_plt_stop(struct wl1271 *wl)
 	cancel_work_sync(&wl->recovery_work);
 	cancel_delayed_work_sync(&wl->elp_work);
 	cancel_delayed_work_sync(&wl->tx_watchdog_work);
+#ifdef CONFIG_BOARD_SEMC_MOGAMI
+	wl1271_disable_interrupts(wl);
+#endif
 
 	mutex_lock(&wl->mutex);
 	wl1271_power_off(wl);
@@ -2578,6 +2595,10 @@ static void wl1271_configure_resume(struct wl1271 *wl,
 				return;
 		}
 
+#ifdef CONFIG_BOARD_SEMC_MOGAMI
+		/* Remove WoWLAN filtering */
+		wl1271_configure_wowlan(wl, NULL);
+#endif
 		ret = wl1271_acx_wake_up_conditions(wl, wlvif,
 				    wl->conf.conn.wake_up_event,
 				    wl->conf.conn.listen_interval);
@@ -4051,6 +4072,19 @@ static int wl1271_set_key(struct wl1271 *wl, struct wl12xx_vif *wlvif,
 		static const u8 bcast_addr[ETH_ALEN] = {
 			0xff, 0xff, 0xff, 0xff, 0xff, 0xff
 		};
+
+#ifdef CONFIG_BOARD_SEMC_MOGAMI
+		/*
+		 * A STA set to GEM cipher requires 2 tx spare blocks.
+		 * Return to default value when GEM cipher key is removed
+		 */
+		if (key_type == KEY_GEM) {
+			if (action == KEY_ADD_OR_REPLACE)
+				wl->tx_spare_blocks = 2;
+			else if (action == KEY_REMOVE)
+				wl->tx_spare_blocks = TX_HW_BLOCK_SPARE_DEFAULT;
+		}
+#endif
 
 		addr = sta ? sta->addr : bcast_addr;
 
@@ -6870,6 +6904,9 @@ static struct ieee80211_hw *wl1271_alloc_hw(void)
 	wl->flags = 0;
 	wl->sg_enabled = true;
 	wl->hw_pg_ver = -1;
+#ifdef CONFIG_BOARD_SEMC_MOGAMI
+	wl->tx_spare_blocks = TX_HW_BLOCK_SPARE_DEFAULT;
+#endif
 	wl->ap_ps_map = 0;
 	wl->ap_fw_ps_map = 0;
 	wl->quirks = 0;
