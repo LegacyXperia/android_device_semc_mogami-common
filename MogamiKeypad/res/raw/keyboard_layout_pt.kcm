@@ -264,4 +264,3 @@ key PERIOD {
     shift, capslock:                    '.'
     alt:                                ':'
 }
-

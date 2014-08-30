@@ -20,6 +20,8 @@
     <string name="keyboard_layout_arabic_label">Arabic</string>
     <string name="keyboard_layout_azerty_label">AZERTY</string>
     <string name="keyboard_layout_cyrillic_label">Cyrillic</string>
+    <string name="keyboard_layout_cyrillic2_label">Cyrillic alternative</string>
+    <string name="keyboard_layout_cyrillic3_label">Cyrillic alternative 2</string>
     <string name="keyboard_layout_da_no_label">Danish/Norwegian</string>
     <string name="keyboard_layout_greek_label">Greek</string>
     <string name="keyboard_layout_pt_label">Portuguese/Catalan</string>

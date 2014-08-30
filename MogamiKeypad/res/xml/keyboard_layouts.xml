@@ -27,6 +27,14 @@
             android:label="@string/keyboard_layout_cyrillic_label"
             android:keyboardLayout="@raw/keyboard_layout_cyrillic" />
 
+    <keyboard-layout android:name="keyboard_layout_cyrillic2"
+            android:label="@string/keyboard_layout_cyrillic2_label"
+            android:keyboardLayout="@raw/keyboard_layout_cyrillic2" />
+
+    <keyboard-layout android:name="keyboard_layout_cyrillic3"
+            android:label="@string/keyboard_layout_cyrillic3_label"
+            android:keyboardLayout="@raw/keyboard_layout_cyrillic3" />
+
     <keyboard-layout android:name="keyboard_layout_da_no"
             android:label="@string/keyboard_layout_da_no_label"
             android:keyboardLayout="@raw/keyboard_layout_da_no" />

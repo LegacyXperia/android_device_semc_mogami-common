@@ -16,6 +16,7 @@
 # QWERTY keyboard layout.
 # For Sony Ericsson Xperia Mini Pro and Sony Ericsson Xperia Pro.
 # Made by hnl_dk.
+# Modified as Cyrillic3 by leadenmoth
 #
 
 type OVERLAY
@@ -130,7 +131,9 @@ key S {
     shift:                              '\u042B'
     capslock:                           's'
     shift+capslock:                     'S'
-    alt, capslock+alt:                  '%'
+    alt:                                '%'
+    capslock+alt:                       's'
+    shift+capslock+alt:                 'S'
 }
 
 key D {
@@ -139,7 +142,8 @@ key D {
     shift:                              '\u0412'
     capslock:                           'd'
     shift+capslock:                     'D'
-    alt, capslock+alt:                  '_'
+    alt:                                '_'
+    capslock+alt:                       '='
 }
 
 key F {
@@ -186,6 +190,7 @@ key K {
     shift+capslock:                     'K'
     alt:                                '\u0445'
     shift+alt:                          '\u0425'
+    capslock+alt:                       '('
 }
 
 key L {
@@ -196,14 +201,17 @@ key L {
     shift+capslock:                     'L'
     alt:                                '\u044A'
     shift+alt:                          '\u042A'
+    capslock+alt:                       ')'
 }
 
 key APOSTROPHE {
     label:                              '\''
-    base, capslock:                     '\u044D'
-    shift, shift+capslock:              '\u042D'
-    alt, capslock+alt:                  '\u0436'
-    shift+alt, shift+capslock+alt:      '\u0416'
+    base:                               '\u044D'
+    shift:                              '\u042D'
+    alt:                                '\u0436'
+    shift+alt:                          '\u0416'
+    capslock:                           '\''
+    shift+capslock, capslock+alt:       '"'
 }
 
 key ENTER {
@@ -221,7 +229,9 @@ key Z {
     shift:                              '\u042F'
     capslock:                           'z'
     shift+capslock:                     'Z'
-    alt, capslock+alt:                  '@'
+    alt:                                '@'
+    capslock+alt:                       'z'
+    shift+capslock+alt:                 'Z'
 }
 
 key X {
@@ -230,7 +240,8 @@ key X {
     shift:                              '\u0427'
     capslock:                           'x'
     shift+capslock:                     'X'
-    alt, capslock+alt:                  '"'
+    alt:                                '"'
+    capslock+alt:                       '%'
 }
 
 key C {
@@ -239,7 +250,8 @@ key C {
     shift:                              '\u0421'
     capslock:                           'c'
     shift+capslock:                     'C'
-    alt, capslock+alt:                  '\''
+    alt:                                '\''
+    capslock+alt:                       '_'
 }
 
 key V {
@@ -257,7 +269,8 @@ key B {
     shift:                              '\u0418'
     capslock:                           'b'
     shift+capslock:                     'B'
-    alt, capslock+alt:                  '\\'
+    alt:                                '\\'
+    capslock+alt:                       '$'
 }
 
 key N {
@@ -266,7 +279,8 @@ key N {
     shift:                              '\u0422'
     capslock:                           'n'
     shift+capslock:                     'N'
-    alt, capslock+alt:                  '('
+    alt:                                '('
+    capslock+alt:                       '\u00A3'
 }
 
 key M {
@@ -275,15 +289,18 @@ key M {
     shift:                              '\u0411'
     capslock:                           'm'
     shift+capslock:                     'M'
-    alt, capslock+alt:                  ')'
+    alt:                                ')'
+    capslock+alt:                       '\u20AC'
 }
 
 key GRAVE {
     label:                              '?'
-    base, capslock:                     '\u044C'
-    shift, shift+capslock:              '\u042C'
-    alt, capslock+alt:                  '\u044E'
-    shift+alt, shift+capslock+alt:      '\u042E'
+    base:                               '\u044C'
+    shift:                              '\u042C'
+    alt:                                '\u044E'
+    shift+alt:                          '\u042E'
+    capslock:                           '?'
+    shift+capslock, capslock+alt:       '!'
 }
 
 ### ROW 4
@@ -298,10 +315,9 @@ key META_LEFT {
 key AT {
     label:                              '@'
     base:                               '?'
-    shift:                              '?'
-    capslock:                           '?'
-    shift+capslock:                     '!'
-    alt, capslock+alt:                  '!'
+    shift, alt:                         '!'
+    capslock:                           '@'
+    shift+capslock, capslock+alt:       '&'
 }
 
 key COMMA {
