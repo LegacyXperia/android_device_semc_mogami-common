@@ -28,6 +28,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/init.board.rc:root/init.board.rc
 
+# Camera wrapper
+PRODUCT_PACKAGES += \
+    camera.semc
+
 # WiFi config & related files
 $(call inherit-product, hardware/ti/wlan/mac80211/wl127x-wlan-products.mk)
 
