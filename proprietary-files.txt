@@ -1,3 +1,7 @@
+# Calibration
+bin/nv_param_loader
+bin/nvimport
+
 # WiFi/BT/FM TI wl1273
 etc/firmware/fmc_ch8_1273.2.bts
 etc/firmware/fmc_init_1273.2.bts
