@@ -46,7 +46,7 @@ PRODUCT_PACKAGES += \
     dhcpcd.conf \
     hostapd \
     hostapd.conf \
-    wpa_supplicant
+    wpa_supplicant \
     wpa_supplicant.conf \
     crda \
     regulatory.bin \
