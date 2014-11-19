@@ -64,9 +64,16 @@ static char EX_FOCUS_AREA_MULTI[] = "multi";
 static char KEY_QC_DIS_MODE[] = "dis";
 static char KEY_QC_SUPPORTED_DIS_MODES[] = "dis-values";
 
+static char KEY_AUTO_EXPOSURE[] = "auto-exposure";
+static char KEY_SUPPORTED_AUTO_EXPOSURE[] = "auto-exposure-values";
+
 /* QCOM parameter values */
 static char KEY_QC_DIS_ENABLE[] = "enable";
 static char KEY_QC_DIS_DISABLE[] = "disable";
+
+static char AUTO_EXPOSURE_FRAME_AVG[] = "frame-average";
+static char AUTO_EXPOSURE_CENTER_WEIGHTED[] = "center-weighted";
+static char AUTO_EXPOSURE_SPOT_METERING[] = "spot-metering";
 
 static android::Mutex gCameraWrapperLock;
 static camera_module_t *gVendorModule = 0;
@@ -144,7 +151,7 @@ void camera_fixup_capability(android::CameraParameters *params)
         char buffer[255];
         const char *supportedMeteringModes = params->get(KEY_EX_SUPPORTED_METERING_MODES);
         sprintf(buffer, "%s-metering", supportedMeteringModes);
-        params->set(android::CameraParameters::KEY_SUPPORTED_AUTO_EXPOSURE, buffer);
+        params->set(KEY_SUPPORTED_AUTO_EXPOSURE, buffer);
     }
 }
 
@@ -192,11 +199,11 @@ static char *camera_fixup_getparams(int id, const char *settings)
     const char *meteringMode = params.get(KEY_EX_METERING_MODE);
     if (meteringMode) {
         if (strcmp(meteringMode, EX_METERING_MODE_FRAME_AVERAGE) == 0) {
-            params.set(android::CameraParameters::KEY_AUTO_EXPOSURE, android::CameraParameters::AUTO_EXPOSURE_FRAME_AVG);
+            params.set(KEY_AUTO_EXPOSURE, AUTO_EXPOSURE_FRAME_AVG);
         } else if (strcmp(meteringMode, EX_METERING_MODE_CENTER_WEIGHTED) == 0) {
-            params.set(android::CameraParameters::KEY_AUTO_EXPOSURE, android::CameraParameters::AUTO_EXPOSURE_CENTER_WEIGHTED);
+            params.set(KEY_AUTO_EXPOSURE, AUTO_EXPOSURE_CENTER_WEIGHTED);
         } else if (strcmp(meteringMode, EX_METERING_MODE_SPOT) == 0) {
-            params.set(android::CameraParameters::KEY_AUTO_EXPOSURE, android::CameraParameters::AUTO_EXPOSURE_SPOT_METERING);
+            params.set(KEY_AUTO_EXPOSURE, AUTO_EXPOSURE_SPOT_METERING);
         }
     }
 
@@ -248,13 +255,13 @@ static char *camera_fixup_setparams(int id, const char *settings)
     }
 
     /* Metering mode */
-    const char *meteringMode = params.get(android::CameraParameters::KEY_AUTO_EXPOSURE);
+    const char *meteringMode = params.get(KEY_AUTO_EXPOSURE);
     if (meteringMode) {
-        if (strcmp(meteringMode, android::CameraParameters::AUTO_EXPOSURE_FRAME_AVG) == 0) {
+        if (strcmp(meteringMode, AUTO_EXPOSURE_FRAME_AVG) == 0) {
             params.set(KEY_EX_METERING_MODE, EX_METERING_MODE_FRAME_AVERAGE);
-        } else if (strcmp(meteringMode, android::CameraParameters::AUTO_EXPOSURE_CENTER_WEIGHTED) == 0) {
+        } else if (strcmp(meteringMode, AUTO_EXPOSURE_CENTER_WEIGHTED) == 0) {
             params.set(KEY_EX_METERING_MODE, EX_METERING_MODE_CENTER_WEIGHTED);
-        } else if (strcmp(meteringMode, android::CameraParameters::AUTO_EXPOSURE_SPOT_METERING) == 0) {
+        } else if (strcmp(meteringMode, AUTO_EXPOSURE_SPOT_METERING) == 0) {
             params.set(KEY_EX_METERING_MODE, EX_METERING_MODE_SPOT);
         }
     }
