@@ -41,9 +41,7 @@ fi
 # Actual calibration...
 # calibrator plt autocalibrate <dev> <module path> <ini file1> <nvs file> <mac addr>
 # Leaving mac address field empty for random mac
-nvimport > /dev/null 2>&1
-calibrator set upd_nvs $TARGET_INI_FILE /data/etc/wifi/fw $TARGET_NVS_FILE
-calibrator set nvs_mac $TARGET_NVS_FILE $HW_MAC
+calibrator plt autocalibrate wlan0 $WL12xx_MODULE $TARGET_INI_FILE $TARGET_NVS_FILE $HW_MAC
 setprop persist.wlan.ti.calibrated 1
 
 echo " ******************************"
