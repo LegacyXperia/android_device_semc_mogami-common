@@ -58,7 +58,6 @@ $(call inherit-product, hardware/ti/wpan/ti-wpan-products.mk)
 
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
-    ro.telephony.ril_class=SemcQualcomm7x30RIL \
     ro.telephony.default_network=0
 
 # proprietary side of the board
