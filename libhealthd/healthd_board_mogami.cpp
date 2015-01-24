@@ -27,6 +27,7 @@ void healthd_board_init(struct healthd_config *config)
     config->batteryTemperaturePath    = "/sys/class/power_supply/semc_battery_data/temp";
     config->batteryTechnologyPath     = "/sys/class/power_supply/semc_battery_data/technology";
     config->batteryCurrentNowPath     = "/sys/class/power_supply/bq27520/current_now";
+    config->batteryCurrentAvgPath     = "/sys/class/power_supply/bq27520/current_avg";
 }
 
 
