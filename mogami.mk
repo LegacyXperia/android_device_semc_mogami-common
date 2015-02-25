@@ -56,7 +56,12 @@ PRODUCT_PACKAGES += \
 $(call inherit-product, hardware/ti/wpan/ti-wpan-products.mk)
 
 # FM
-#$(call inherit-product, hardware/ti/wpan/ti-wpan-fm-products.mk)
+PRODUCT_PACKAGES += \
+    FmRxApp \
+    FmService \
+    libfmradio \
+    fmradioif \
+    com.ti.fm.fmradioif.xml
 
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
