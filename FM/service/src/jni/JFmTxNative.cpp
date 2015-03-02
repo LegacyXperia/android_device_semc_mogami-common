@@ -37,7 +37,7 @@ extern "C" {
 #include <stdio.h>
 #include <fcntl.h>
 #include <asoundlib.h>
-#include <linux/videodev.h>
+#include <linux/videodev2.h>
 #include <math.h>
 #include <pthread.h>
 #include <errno.h>
