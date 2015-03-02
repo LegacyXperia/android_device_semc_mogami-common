@@ -107,7 +107,9 @@ public class FmRadio {
        mContext = context.getApplicationContext();
        mServiceListener = listener;
        Log.i(TAG, "FmRadio:Creating a FmRadio proxy object: " + mConnection);
-       mContext.bindService(new Intent("com.ti.server.FmService"), mConnection,
+       Intent intent = new Intent("com.ti.server.FmService");
+       intent.setPackage("com.ti.server");
+       mContext.bindService(intent, mConnection,
              Context.BIND_AUTO_CREATE);
     }
 
