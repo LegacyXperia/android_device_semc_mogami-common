@@ -116,7 +116,6 @@ key P {
 
 key A {
     label:                              'A'
-    number:                             '2'
     base:                               '\u0444'
     shift:                              '\u0424'
     capslock:                           'a'
@@ -230,7 +229,7 @@ key X {
     shift:                              '\u0427'
     capslock:                           'x'
     shift+capslock:                     'X'
-    alt, capslock+alt:                  '"'
+    alt, capslock+alt:                  '\"'
 }
 
 key C {
@@ -288,7 +287,7 @@ key GRAVE {
 
 ### ROW 4
 
-key META_LEFT {
+key PICTSYMBOLS {
     label:                              '\uEF01'
     base:                               '\uEF01'
     shift, capslock:                    '\uEF01'

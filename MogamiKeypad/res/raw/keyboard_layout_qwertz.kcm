@@ -160,7 +160,7 @@ key APOSTROPHE {
     label:                              '\''
     base:                               '\''
     shift, capslock:                    '\''
-    alt:                                '"'
+    alt:                                '\"'
 }
 
 key ENTER {
@@ -229,11 +229,11 @@ key GRAVE {
 
 ### ROW 4
 
-key META_LEFT {
-    label:                              '\uef01'
-    base:                               '\uef01'
-    shift, capslock:                    '\uef01'
-    alt:                                '\uef01'
+key PICTSYMBOLS {
+    label:                              '\uEF01'
+    base:                               '\uEF01'
+    shift, capslock:                    '\uEF01'
+    alt:                                '\uEF01'
 }
 
 key AT {
@@ -263,4 +263,3 @@ key PERIOD {
     shift, capslock:                    '.'
     alt:                                ':'
 }
-
