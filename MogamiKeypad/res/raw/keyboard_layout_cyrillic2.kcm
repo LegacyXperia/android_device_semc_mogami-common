@@ -573,7 +573,7 @@ key APOSTROPHE {
     alt:                                '\u044D'
     capslock:                           '\''
     shift+capslock:                     '\''
-    capslock+alt:                       '"'
+    capslock+alt:                       '\"'
     shift+alt:                          '\u042D'
 }
 
@@ -604,7 +604,7 @@ key PLUS {
     shift+alt:                          '+'
 }
 
-key META_LEFT {
+key PICTSYMBOLS {
     label:                              '\uef01'
     number:                             '\uef01'
     base:                               '\uef01'
