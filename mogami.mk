@@ -33,7 +33,10 @@ PRODUCT_PACKAGES += \
     camera.semc
 
 # WiFi config & related files
-$(call inherit-product, hardware/ti/wlan/mac80211/wl127x-wlan-products.mk)
+PRODUCT_PACKAGES += \
+    wl127x-fw-5-sr.bin \
+    wl127x-fw-5-mr.bin \
+    wl127x-fw-5-plt.bin
 
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/system/bin/wifi-cal.sh:system/bin/wifi-cal.sh \
