@@ -16,9 +16,9 @@ on boot
     chmod 0666 /sys/devices/i2c-0/0-0054/nburst
 
     # Load wl1271 modules
-    insmod /system/lib/modules/compat.ko
     insmod /system/lib/modules/cfg80211.ko
     insmod /system/lib/modules/mac80211.ko
+    insmod /system/lib/modules/wlcore.ko
     insmod /system/lib/modules/wl12xx.ko
     setprop persist.wlan.ti.calibrated 0
 
