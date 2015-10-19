@@ -48,11 +48,11 @@ WLAN_MODULES:
 	mv $(KERNEL_OUT)/modules/$(TARGET_MODULES_SOURCE_DIR)/net/wireless/cfg80211.ko $(KERNEL_MODULES_OUT)
 	mv $(KERNEL_OUT)/modules/$(TARGET_MODULES_SOURCE_DIR)/drivers/net/wireless/wl12xx/wl12xx.ko $(KERNEL_MODULES_OUT)
 	mv $(KERNEL_OUT)/modules/$(TARGET_MODULES_SOURCE_DIR)/drivers/net/wireless/wl12xx/wl12xx_sdio.ko $(KERNEL_MODULES_OUT)
-	$(ARM_EABI_TOOLCHAIN)/arm-eabi-strip --strip-debug --strip-unneeded $(KERNEL_MODULES_OUT)/compat.ko
-	$(ARM_EABI_TOOLCHAIN)/arm-eabi-strip --strip-debug --strip-unneeded $(KERNEL_MODULES_OUT)/mac80211.ko
-	$(ARM_EABI_TOOLCHAIN)/arm-eabi-strip --strip-debug --strip-unneeded $(KERNEL_MODULES_OUT)/cfg80211.ko
-	$(ARM_EABI_TOOLCHAIN)/arm-eabi-strip --strip-debug --strip-unneeded $(KERNEL_MODULES_OUT)/wl12xx.ko
-	$(ARM_EABI_TOOLCHAIN)/arm-eabi-strip --strip-debug --strip-unneeded $(KERNEL_MODULES_OUT)/wl12xx_sdio.ko
+	$(KERNEL_TOOLCHAIN_PATH)strip --strip-debug --strip-unneeded $(KERNEL_MODULES_OUT)/compat.ko
+	$(KERNEL_TOOLCHAIN_PATH)strip --strip-debug --strip-unneeded $(KERNEL_MODULES_OUT)/mac80211.ko
+	$(KERNEL_TOOLCHAIN_PATH)strip --strip-debug --strip-unneeded $(KERNEL_MODULES_OUT)/cfg80211.ko
+	$(KERNEL_TOOLCHAIN_PATH)strip --strip-debug --strip-unneeded $(KERNEL_MODULES_OUT)/wl12xx.ko
+	$(KERNEL_TOOLCHAIN_PATH)strip --strip-debug --strip-unneeded $(KERNEL_MODULES_OUT)/wl12xx_sdio.ko
 
 TARGET_KERNEL_MODULES += WLAN_MODULES
 
