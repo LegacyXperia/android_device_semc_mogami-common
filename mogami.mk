@@ -61,6 +61,7 @@ $(call inherit-product, hardware/ti/wpan/ti-wpan-products.mk)
 
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
+    ro.disableWifiApFirmwareReload=true \
     ro.telephony.default_network=0
 
 # proprietary side of the board
