@@ -177,6 +177,11 @@ static char *camera_fixup_getparams(int id, const char *settings)
 
         /* Fix exposure compensation step */
         params.set(android::CameraParameters::KEY_EXPOSURE_COMPENSATION_STEP, "1");
+
+#ifdef USES_AS3676_TORCH
+        /* HACK - Lie that we support auto & on flash modes */
+        params.set(android::CameraParameters::KEY_SUPPORTED_FLASH_MODES, "off,auto,on,torch");
+#endif
     }
 
     /* Video recording mode */
@@ -234,6 +239,23 @@ static char *camera_fixup_setparams(int id, const char *settings)
 #if !LOG_NDEBUG
     ALOGV("%s: original parameters:", __FUNCTION__);
     params.dump();
+#endif
+
+#ifdef USES_AS3676_TORCH
+    /* Back Camera */
+    if (id == 0) {
+        /* HACK - Lie that we support auto & on flash modes */
+        const char *flashMode = params.get(android::CameraParameters::KEY_FLASH_MODE);
+        if (flashMode) {
+            if (strcmp(flashMode, android::CameraParameters::FLASH_MODE_ON) == 0) {
+                params.set(android::CameraParameters::KEY_FLASH_MODE,
+                        android::CameraParameters::FLASH_MODE_TORCH);
+            } else if (strcmp(flashMode, android::CameraParameters::FLASH_MODE_AUTO) == 0) {
+                params.set(android::CameraParameters::KEY_FLASH_MODE,
+                        android::CameraParameters::FLASH_MODE_OFF);
+            }
+        }
+    }
 #endif
 
     /* Video recording mode */
