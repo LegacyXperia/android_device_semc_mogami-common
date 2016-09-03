@@ -29,7 +29,7 @@ BOARD_SOFTAP_DEVICE              := wl12xx_mac80211
 WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/wl12xx_sdio.ko"
 WIFI_DRIVER_MODULE_NAME          := "wl12xx_sdio"
 WIFI_FIRMWARE_LOADER             := ""
-COMMON_GLOBAL_CFLAGS             += -DUSES_TI_MAC80211
+BOARD_GLOBAL_CFLAGS              += -DUSES_TI_MAC80211
 endif
 
 # Required for newer wpa_supplicant_8_ti versions to fix tethering
@@ -63,7 +63,7 @@ BOARD_HAVE_BLUETOOTH_TI := true
 # FM Radio
 TARGET_PROVIDES_TI_FM_SERVICE := true
 #BOARD_HAVE_QCOM_FM := true
-#COMMON_GLOBAL_CFLAGS += -DQCOM_FM_ENABLED -DHAVE_SEMC_FM_RADIO
+#BOARD_GLOBAL_CFLAGS += -DQCOM_FM_ENABLED -DHAVE_SEMC_FM_RADIO
 
 # Override healthd HAL
 BOARD_HAL_STATIC_LIBRARIES := libhealthd.mogami
