@@ -16,6 +16,9 @@
 
 TARGET_BOOTLOADER_BOARD_NAME := mogami
 
+# SELinux
+BOARD_SEPOLICY_DIRS += device/semc/mogami-common/sepolicy
+
 # WiFi
 USES_TI_MAC80211 := true
 ifdef USES_TI_MAC80211
