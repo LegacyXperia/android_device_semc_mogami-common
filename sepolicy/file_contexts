@@ -1,0 +1,2 @@
+/system/bin/uim-sysfs                           u:object_r:uim_exec:s0
+/system/bin/wifi-cal.sh                         u:object_r:wifi_calibrator_exec:s0

@@ -1,0 +1,4 @@
+type wifi_calibrator, domain;
+type wifi_calibrator_exec, exec_type, file_type;
+
+init_daemon_domain(wifi_calibrator)
