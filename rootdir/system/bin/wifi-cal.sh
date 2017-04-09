@@ -4,7 +4,7 @@ WIFION=`getprop init.svc.p2p_supplicant`
 SAMPLE_NVS_FILE=/system/etc/firmware/ti-connectivity/wl1271-nvs_127x.bin
 TARGET_NVS_FILE=/data/misc/wifi/wl1271-nvs.bin
 TARGET_INI_FILE=/system/etc/wifi/TQS_S_2.6.ini
-WL12xx_MODULE=/system/lib/modules/wl12xx_sdio.ko
+WL12xx_MODULE=/system/lib/modules/wlcore_sdio.ko
 HW_MAC=`cat /proc/cmdline | grep -o -E "wifi0.eth_addr=([[:xdigit:]]{1,2}:){5}[[:xdigit:]]{1,2}" | sed s/wifi0.eth_addr=//`
 
 # If target nvs exists, assume wifi is already calibrated
@@ -33,7 +33,7 @@ then
     echo ""
 else
     echo "*********************************"
-    echo "* wl12xx_sdio module not found! *"
+    echo "* wlcore_sdio module not found! *"
     echo "*********************************"
     exit
 fi
