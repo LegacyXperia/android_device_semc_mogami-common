@@ -62,14 +62,6 @@ service wifi_calibrator /system/bin/sh /system/bin/wifi-cal.sh
     group wifi
     oneshot
 
-# crda service is started by the RegulatoryObserver after a request to the kernel
-# to change the regulatory domain.
-service wifi-crda /system/bin/sh /system/etc/init.crda.sh
-    class late_start
-    user root
-    disabled
-    oneshot
-
 # We need to set the right calibration data
 on property:persist.wlan.ti.calibrated=0
     start wifi_calibrator

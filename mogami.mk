@@ -36,7 +36,6 @@ $(call inherit-product, hardware/ti/wlan/mac80211/wl127x-wlan-products.mk)
 
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/system/bin/wifi-cal.sh:system/bin/wifi-cal.sh \
-    $(COMMON_PATH)/rootdir/system/etc/init.crda.sh:system/etc/init.crda.sh \
     $(COMMON_PATH)/rootdir/system/etc/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
     $(COMMON_PATH)/rootdir/system/etc/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
 
@@ -45,8 +44,6 @@ PRODUCT_PACKAGES += \
     hostapd.conf \
     wpa_supplicant \
     wpa_supplicant.conf \
-    crda \
-    regulatory.bin \
     calibrator
 
 # BT
