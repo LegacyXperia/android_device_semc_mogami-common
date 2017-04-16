@@ -18,7 +18,6 @@ TARGET_BOOTLOADER_BOARD_NAME := mogami
 
 # WiFi
 USES_TI_MAC80211 := true
-ifdef USES_TI_MAC80211
 BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_wl12xx
 WPA_SUPPLICANT_VERSION           := VER_0_8_X
@@ -29,14 +28,8 @@ BOARD_SOFTAP_DEVICE              := wl12xx_mac80211
 WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/wlcore_sdio.ko"
 WIFI_DRIVER_MODULE_NAME          := "wlcore_sdio"
 WIFI_FIRMWARE_LOADER             := ""
-BOARD_GLOBAL_CFLAGS              += -DUSES_TI_MAC80211
-endif
-
-# Required for newer wpa_supplicant_8_ti versions to fix tethering
-BOARD_WIFI_SKIP_CAPABILITIES := true
 
 # Bluetooth
-BOARD_WPAN_DEVICE := true
 BOARD_HAVE_BLUETOOTH_TI := true
 
 # FM Radio

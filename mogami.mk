@@ -51,7 +51,6 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     hostapd \
-    hostapd.conf \
     wpa_supplicant \
     wpa_supplicant.conf \
     calibrator
